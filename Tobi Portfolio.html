@@ -1,560 +1,205 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Tobi Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tobi Oladipo | Portfolio</title>
+<meta name="description" content="Business analyst who builds interactive dashboards, workflow automation and predictive models.">
 <style>
-/* Layout: compact hero, then three equal project sections, each pairing plain text with its own interactive demo. */
-:root {
-  --bg: #edf0f5;
-  --surface: #f8f9fc;
-  --fg: #121620;
-  --muted: #586073;
-  --line: #cbd1dd;
-  --accent: #2540f0;
-  --c1: #2540f0;
-  --c2: #0c8f77;
-  --c3: #c4701a;
-  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0d1018; --surface: #151a26; --fg: #e8ecf5; --muted: #9aa3b8; --line: #2a3144;
-    --accent: #8fa2ff; --c1: #8fa2ff; --c2: #3ccbaa; --c3: #f0a458;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0d1018; --surface: #151a26; --fg: #e8ecf5; --muted: #9aa3b8; --line: #2a3144;
-  --accent: #8fa2ff; --c1: #8fa2ff; --c2: #3ccbaa; --c3: #f0a458;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
-  padding-inline: 1.25rem;
-  padding-block: 0 4rem;
-}
-.wrap { max-width: 68rem; margin-inline: auto; }
-a { color: var(--accent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-.topbar {
-  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; align-items: baseline;
-  padding-block: 1.25rem; border-bottom: 1px solid var(--line);
-  font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
-}
-.topbar nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
-.topbar a { color: var(--muted); text-decoration: none; }
-.topbar a:hover { color: var(--fg); }
-
-.hero { padding-block: 3.5rem 3rem; }
-.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; }
-h1 {
-  font-family: var(--font-display); font-weight: 800; font-size: clamp(2.4rem, 6.5vw, 4.5rem);
-  line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 1.25rem; text-wrap: balance; max-width: 18ch;
-}
-.lede { font-size: 1.125rem; color: var(--muted); max-width: 40rem; margin: 0 0 1.75rem; }
-.facts { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
-.facts li {
-  font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.7rem;
-  border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
-}
-
-section { padding-block: 3.5rem; border-top: 1px solid var(--line); }
-h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.25rem); letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 0.75rem; text-wrap: balance; }
-h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.2; margin: 0 0 0.4rem; }
-.kind { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
-
-.project { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-@media (min-width: 60rem) { .project { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 3.5rem; align-items: start; } }
-.project > div { min-width: 0; }
-.project ul.points { margin: 0 0 1.5rem; padding-left: 1.1rem; display: grid; gap: 0.6rem; }
-.stack { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin: 0; }
-.stack b { color: var(--fg); font-weight: 500; }
-
-.meta { margin: 0 0 1.5rem; display: grid; gap: 0.9rem; }
-.meta dt { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.meta dd { margin: 0.1rem 0 0; font-size: 0.9375rem; }
-.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.5rem; padding: 0; list-style: none; }
-.chips li { font-size: 0.8125rem; padding: 0.3rem 0.7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
-.label-sm { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
-
-.demo { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; min-width: 0; }
-.demo-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 0.75rem; align-items: baseline; margin-bottom: 0.35rem; }
-.demo-title { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin: 0; }
-.tag-sample { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.demo-sub { margin: 0 0 1rem; font-size: 0.875rem; color: var(--muted); }
-.toggles { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
-.toggle {
-  font: inherit; font-size: 0.8125rem; font-weight: 500; cursor: pointer; color: var(--fg);
-  background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.85rem;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-}
-.toggle:hover { border-color: var(--muted); }
-.toggle[aria-pressed="true"] { border-color: var(--fg); }
-.toggle .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--line); }
-.toggle[aria-pressed="true"] .dot { background: var(--dotc); }
-.toggle.solid[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
-.readout { margin: 1rem 0 0; font-size: 0.9375rem; min-height: 4.5em; }
-.readout strong { font-variant-numeric: tabular-nums; }
-
-.chart-box { overflow-x: auto; }
-svg.chart { display: block; width: 100%; min-width: 20rem; height: auto; }
-.chart .grid { stroke: var(--line); stroke-width: 1; }
-.chart .axis-label { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
-.chart .line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
-.chart .val { font-family: var(--font-mono); font-size: 11px; font-weight: 500; }
-.range-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted); }
-.range-row input[type="range"] { flex: 1 1 10rem; min-width: 0; accent-color: var(--accent); }
-
-.bars { display: grid; gap: 1rem; }
-.bar-row { min-width: 0; }
-.bar-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; font-size: 0.8125rem; margin-bottom: 0.35rem; }
-.bar-label b { font-weight: 600; }
-.bar-label span { font-family: var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-.bar { display: flex; height: 1.75rem; width: 100%; }
-.seg { height: 100%; flex: none; }
-.seg.kept { background: var(--rowc); }
-.seg.removed { border: 1.5px dashed var(--muted); border-left: 0; background: transparent; }
-.seg.added { background: repeating-linear-gradient(135deg, var(--rowc) 0 4px, transparent 4px 8px); border: 1.5px solid var(--rowc); border-left: 0; }
-.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin: 1rem 0 0; padding: 0; list-style: none; font-size: 0.75rem; color: var(--muted); }
-.legend li { display: flex; align-items: center; gap: 0.4rem; }
-.legend i { display: inline-block; width: 1.1rem; height: 0.7rem; }
-.legend .k { background: var(--fg); }
-.legend .r { border: 1.5px dashed var(--muted); }
-.legend .a { background: repeating-linear-gradient(135deg, var(--fg) 0 3px, transparent 3px 6px); border: 1.5px solid var(--fg); }
-
-.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
-@media (max-width: 34rem) { .flow { grid-template-columns: minmax(0, 1fr); } }
-.flow button {
-  width: 100%; height: 100%; text-align: left; font: inherit; font-size: 0.8125rem; font-weight: 500; cursor: pointer; color: var(--fg);
-  background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem;
-  display: flex; flex-direction: column; gap: 0.25rem;
-}
-.flow button small { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--muted); }
-.flow button:hover { border-color: var(--muted); }
-.flow button[aria-current="step"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
-.flow button.done small { color: var(--c2); }
-.flow-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-
-.tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
-.tools li { border: 1px solid var(--line); border-radius: 10px; padding: 0.9rem 1rem; background: var(--surface); }
-.tools b { display: block; font-family: var(--font-display); font-size: 1.05rem; }
-.tools span { font-size: 0.8125rem; color: var(--muted); }
-.sec-note { color: var(--muted); max-width: 40rem; margin: 0 0 1.5rem; }
-
-footer { padding-top: 2rem; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .seg { transition: width 0.35s ease; }
-  .toggle, .flow button { transition: background-color 0.15s, color 0.15s, border-color 0.15s; }
-}
+:root{color-scheme:light;--bg:#f7f8fa;--card:#fff;--ink:#14213d;--mut:#5b6678;--line:#dfe3ea;--acc:#1f5fbf;--acc2:#e8f0fc;--ok:#2e8b57;--bad:#c0392b;--add:#e0a21b}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#0f1520;--card:#182131;--ink:#e8edf6;--mut:#9aa7bb;--line:#2a3548;--acc:#6ea4ff;--acc2:#1d2b45;--ok:#5cc08a;--bad:#ef7b6e;--add:#f0bf4a}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+a{color:var(--acc)}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+nav b{font-size:15px}
+nav div a{margin-left:12px;font-size:14px;text-decoration:none;color:var(--mut)}
+header{padding:44px 0 26px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:600}
+h1{font-size:clamp(28px,6vw,44px);line-height:1.15;margin:10px 0 14px}
+.lead{color:var(--mut);max-width:640px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:18px 0 0;list-style:none}
+.facts li{background:var(--acc2);color:var(--ink);border-radius:999px;padding:4px 12px;font-size:14px}
+section{padding:28px 0;border-top:1px solid var(--line)}
+.tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+h2{margin:4px 0 10px;font-size:24px}
+h3{margin:0 0 4px;font-size:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:16px}
+.sub{font-size:13px;color:var(--mut);margin:0 0 10px}
+.stack{font-size:14px;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
+button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+button.go{background:var(--acc);border-color:var(--acc);color:#fff}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.grid4 div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px}
+.grid4 b{display:block}
+svg{width:100%;height:auto;display:block}
+.out{font-size:15px;margin:8px 0 0}
+input[type=range]{width:100%}
+ol{list-style:none;padding:0;margin:10px 0}
+ol li{display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin-bottom:6px;font-size:14px}
+ol li.now{border-color:var(--acc);background:var(--acc2)}
+ol li.done{color:var(--mut)}
+ol li span{font-size:12px;color:var(--mut);min-width:96px}
+.bar{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--line);margin:4px 0 10px}
+.bar i{display:block;height:100%}
+.k{background:var(--acc)}.r{background:var(--bad);opacity:.55}.a{background:var(--add)}
+ul.tools{list-style:none;padding:0;margin:12px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+ul.tools li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+ul.tools b{display:block}
+ul.tools span,.plain li{color:var(--mut);font-size:14px}
+.plain{margin:6px 0 14px;padding-left:20px}
+footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--mut);font-size:14px}
 </style>
+</head>
+<body>
+<nav><div class="wrap"><b>Tobi Oladipo</b><div>
+<a href="#outreach">Outreach</a><a href="#hr">HR automation</a><a href="#clabsi">Healthcare</a><a href="#toolkit">Toolkit</a><a href="#contact">Contact</a></div></div></nav>
 
-<div class="wrap">
-  <header class="topbar">
-    <span>Tobi / Portfolio</span>
-    <nav aria-label="Projects">
-      <a href="#outreach">Social media outreach</a>
-      <a href="#hr">HR automation</a>
-      <a href="#clabsi">Healthcare analytics</a>
-      <a href="#toolkit">Toolkit</a>
-    </nav>
-  </header>
+<main class="wrap">
+<header>
+<div class="eyebrow">Business Analyst · Data and Automation</div>
+<h1>I turn analysis into things people can click.</h1>
+<p class="lead">Business analyst who builds interactive dashboards, workflow automation and predictive models, and presents them to the people who use them. Three projects below, each with a small working prototype you can try.</p>
+<ul class="facts"><li>Business Analyst since Apr 2025</li><li>M.S. Business Analytics (Data Analytics)</li><li>Houston, TX area</li></ul>
+</header>
 
-  <main>
-    <div class="hero">
-      <p class="eyebrow">Associate Creative Technologist · R-66763</p>
-      <h1>I turn analysis into things people can click.</h1>
-      <p class="lede">Business analyst who builds interactive dashboards, workflow automation and predictive models, and presents them to the people who use them. Three projects below, each with a small working prototype you can try.</p>
-      <ul class="facts">
-        <li>Business Analyst since Apr 2025</li>
-        <li>M.S. Data Analytics</li>
-        <li>Houston, TX area</li>
-      </ul>
-    </div>
-
-    <section id="outreach">
-      <div class="project">
-        <div>
-          <p class="kind">Executive analytics</p>
-          <h2>Social media outreach analytics</h2>
-          <ul class="points">
-            <li>Built Power BI dashboards that track how social media outreach is performing.</li>
-            <li>Presented the analytics to executives, explaining what the numbers meant and what to do next.</li>
-          </ul>
-          <p class="stack"><b>Power BI</b> · SQL · Excel</p>
-        </div>
-        <div class="demo" id="demo-outreach">
-          <div class="demo-head">
-            <h3 class="demo-title">Outreach Pulse</h3>
-            <span class="tag-sample">Interactive · sample data</span>
-          </div>
-          <p class="demo-sub">A full year of weekly sample data, the kind of view an executive briefing needs. Pick the channels, set the time window, read the takeaway.</p>
-          <div class="toggles" role="group" aria-label="Channels shown">
-            <button class="toggle" type="button" id="t-social" data-ch="Social" aria-pressed="true" style="--dotc: var(--c1)"><span class="dot"></span>Social</button>
-            <button class="toggle" type="button" id="t-email" data-ch="Email" aria-pressed="true" style="--dotc: var(--c2)"><span class="dot"></span>Email</button>
-            <button class="toggle" type="button" id="t-events" data-ch="Events" aria-pressed="true" style="--dotc: var(--c3)"><span class="dot"></span>Events</button>
-          </div>
-          <div class="chart-box"><svg class="chart" id="chart" viewBox="0 0 600 280" role="img" aria-label="Weekly outreach reach by channel over 52 weeks"><line class="grid" x1="44" x2="552" y1="250.0" y2="250.0"/><text class="axis-label" x="36" y="254.0" text-anchor="end">0</text><line class="grid" x1="44" x2="552" y1="191.0" y2="191.0"/><text class="axis-label" x="36" y="195.0" text-anchor="end">300</text><line class="grid" x1="44" x2="552" y1="132.0" y2="132.0"/><text class="axis-label" x="36" y="136.0" text-anchor="end">600</text><line class="grid" x1="44" x2="552" y1="73.0" y2="73.0"/><text class="axis-label" x="36" y="77.0" text-anchor="end">900</text><line class="grid" x1="44" x2="552" y1="14.0" y2="14.0"/><text class="axis-label" x="36" y="18.0" text-anchor="end">1,200</text><text class="axis-label" x="44.0" y="272" text-anchor="middle">W1</text><text class="axis-label" x="83.84" y="272" text-anchor="middle">W5</text><text class="axis-label" x="123.69" y="272" text-anchor="middle">W9</text><text class="axis-label" x="163.53" y="272" text-anchor="middle">W13</text><text class="axis-label" x="203.37" y="272" text-anchor="middle">W17</text><text class="axis-label" x="243.22" y="272" text-anchor="middle">W21</text><text class="axis-label" x="283.06" y="272" text-anchor="middle">W25</text><text class="axis-label" x="322.9" y="272" text-anchor="middle">W29</text><text class="axis-label" x="362.75" y="272" text-anchor="middle">W33</text><text class="axis-label" x="402.59" y="272" text-anchor="middle">W37</text><text class="axis-label" x="442.43" y="272" text-anchor="middle">W41</text><text class="axis-label" x="482.27" y="272" text-anchor="middle">W45</text><text class="axis-label" x="522.12" y="272" text-anchor="middle">W49</text><text class="axis-label" x="552.0" y="272" text-anchor="middle">W52</text><polyline class="line" stroke="var(--c1)" points="44.0,170.35 53.96,164.65 63.92,157.37 73.88,159.34 83.84,149.7 93.8,155.01 103.76,146.36 113.73,144.19 123.69,142.42 133.65,140.85 143.61,141.24 153.57,143.41 163.53,138.1 173.49,134.95 183.45,143.41 193.41,138.29 203.37,140.46 213.33,132.79 223.29,132.98 233.25,133.18 243.22,131.02 253.18,123.74 263.14,120.99 273.1,120.79 283.06,109.78 293.02,107.61 302.98,98.76 312.94,101.12 322.9,89.13 332.86,91.68 342.82,83.62 352.78,86.37 362.75,75.95 372.71,77.13 382.67,73.2 392.63,74.57 402.59,78.9 412.55,76.93 422.51,78.31 432.47,77.13 442.43,77.13 452.39,73.2 462.35,72.21 472.31,70.44 482.27,67.89 492.24,68.48 502.2,64.15 512.16,53.33 522.12,56.68 532.08,49.01 542.04,47.63 552.0,40.35"/><circle cx="552.0" cy="40.35" r="4.5" fill="var(--c1)"/><text class="val" x="561.0" y="44.35" fill="var(--c1)">1,066</text><polyline class="line" stroke="var(--c2)" points="44.0,188.64 53.96,183.33 63.92,182.35 73.88,185.1 83.84,181.76 93.8,183.13 103.76,183.72 113.73,183.72 123.69,181.56 133.65,179.2 143.61,181.36 153.57,178.61 163.53,182.74 173.49,179.79 183.45,178.02 193.41,180.58 203.37,182.35 213.33,181.36 223.29,177.23 233.25,181.95 243.22,175.66 253.18,177.23 263.14,177.82 273.1,177.63 283.06,178.22 293.02,175.66 302.98,170.94 312.94,174.28 322.9,167.79 332.86,169.76 342.82,169.96 352.78,168.58 362.75,165.04 372.71,165.04 382.67,162.68 392.63,158.75 402.59,160.91 412.55,159.34 422.51,154.42 432.47,152.26 442.43,152.26 452.39,153.83 462.35,150.88 472.31,154.03 482.27,149.9 492.24,148.13 502.2,151.27 512.16,150.68 522.12,150.09 532.08,147.34 542.04,151.47 552.0,148.13"/><circle cx="552.0" cy="148.13" r="4.5" fill="var(--c2)"/><text class="val" x="561.0" y="152.13" fill="var(--c2)">518</text><polyline class="line" stroke="var(--c3)" points="44.0,232.69 53.96,232.89 63.92,230.33 73.88,225.02 83.84,230.33 93.8,224.63 103.76,230.73 113.73,173.5 123.69,225.42 133.65,230.92 143.61,229.74 153.57,231.91 163.53,236.63 173.49,236.63 183.45,238.99 193.41,238.2 203.37,185.89 213.33,233.48 223.29,231.51 233.25,230.92 243.22,229.55 253.18,228.37 263.14,225.22 273.1,224.63 283.06,226.01 293.02,173.89 302.98,229.35 312.94,228.37 322.9,227.78 332.86,229.94 342.82,235.25 352.78,232.69 362.75,235.64 372.71,238.0 382.67,184.9 392.63,236.23 402.59,232.69 412.55,229.35 422.51,226.99 432.47,226.01 442.43,227.78 452.39,226.4 462.35,227.19 472.31,173.3 482.27,223.25 492.24,228.17 502.2,228.76 512.16,229.15 522.12,230.92 532.08,238.0 542.04,232.69 552.0,237.81"/><circle cx="552.0" cy="237.81" r="4.5" fill="var(--c3)"/><text class="val" x="561.0" y="241.81" fill="var(--c3)">62</text></svg></div>
-          <div class="range-row">
-            <label for="weeks">Weeks shown</label>
-            <input type="range" id="weeks" min="4" max="52" value="52">
-            <span id="weeks-out">52</span>
-          </div>
-          <p class="readout" id="readout-o" aria-live="polite"><strong>65,759</strong> total reach over 52 weeks. Best week: <strong>W44</strong> at 1,791. Week 1 to week 52: <strong>+104%</strong>.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="hr">
-      <div class="project">
-        <div>
-          <p class="kind">Low-code automation</p>
-          <h2>HR workflow automation</h2>
-          <ul class="points">
-            <li>Implemented Power Automate solutions that move HR requests through a defined process.</li>
-            <li>Wrote the business requirements behind each workflow before building it.</li>
-          </ul>
-          <p class="label-sm">How these flows work</p>
-          <dl class="meta">
-            <div><dt>Trigger</dt><dd>A form, email or status change starts the flow.</dd></div>
-            <div><dt>Approval</dt><dd>The request goes to the right person and waits for their answer.</dd></div>
-            <div><dt>Notification</dt><dd>People are told what happened without anyone chasing.</dd></div>
-            <div><dt>Record</dt><dd>Each request is logged so it can be reported on later.</dd></div>
-          </dl>
-          <p class="stack"><b>Power Automate</b> · business requirements documentation</p>
-        </div>
-        <div class="demo" id="demo-hr">
-          <div class="demo-head">
-            <h3 class="demo-title">Request Flow</h3>
-            <span class="tag-sample">Interactive · example flow</span>
-          </div>
-          <p class="demo-sub">An example of how an HR request travels once it is automated. Pick a request type, then select a stage to see what the flow does there.</p>
-          <div class="toggles" id="flow-types" role="group" aria-label="Request type">
-            <button class="toggle solid" type="button" data-t="time" aria-pressed="true">Time off</button>
-            <button class="toggle solid" type="button" data-t="equip" aria-pressed="false">Equipment</button>
-            <button class="toggle solid" type="button" data-t="onboard" aria-pressed="false">New hire</button>
-          </div>
-          <ol class="flow" id="flow"><li><button type="button" data-i="0" class="" aria-current="step"><small>1 of 4 · Now</small>Request submitted</button></li><li><button type="button" data-i="1" class=""><small>2 of 4 · Waiting</small>Approval</button></li><li><button type="button" data-i="2" class=""><small>3 of 4 · Waiting</small>HR review</button></li><li><button type="button" data-i="3" class=""><small>4 of 4 · Waiting</small>Outcome sent</button></li></ol>
-          <p class="readout" id="readout-h" aria-live="polite"><strong>Request submitted.</strong> An employee submits a time-off form. The flow records it and sends it to their manager.</p>
-          <div class="flow-actions">
-            <button class="toggle solid" type="button" id="flow-next" aria-pressed="true">Next stage</button>
-            <button class="toggle" type="button" id="flow-reset" aria-pressed="false">Start over</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="clabsi">
-      <div class="project">
-        <div>
-          <p class="kind">Predictive modeling</p>
-          <h2>Healthcare Analytics Capstone (CLABSI Prediction)</h2>
-          <ul class="points">
-            <li>Analyzed healthcare data to identify risk factors associated with hospital-acquired bloodstream infections.</li>
-            <li>Used Python and statistical modeling techniques to improve predictive performance and support evidence-based recommendations.</li>
-          </ul>
-          <dl class="meta">
-            <div><dt>Data</dt><dd>Texas Children's Hospital, in a graduate capstone practicum with a six-person team and faculty mentors.</dd></div>
-            <div><dt>Question</dt><dd>Will a patient develop a central line-associated bloodstream infection (CLABSI) within the next three days? True or False.</dd></div>
-            <div><dt>Data problems</dt><dd>A heavily imbalanced target, 239,605 missing values and outliers.</dd></div>
-          </dl>
-          <p class="label-sm">Four model types</p>
-          <ul class="chips">
-            <li>Weighted neural network</li>
-            <li>Bagged decision trees</li>
-            <li>Support vector machine</li>
-            <li>XGBoost</li>
-          </ul>
-          <p class="label-sm">Evaluation</p>
-          <p class="stack" style="margin-bottom:1.5rem">Stratified k-fold cross-validation · precision, recall, F1, ROC-AUC · decision and cost curves, since a missed infection costs more than a false alarm.</p>
-          <p class="stack"><b>Python</b> · scikit-learn · XGBoost</p>
-        </div>
-        <div class="demo" id="demo-clabsi">
-          <div class="demo-head">
-            <h3 class="demo-title">Class Balance Lab</h3>
-            <span class="tag-sample">Interactive · illustrative counts</span>
-          </div>
-          <p class="demo-sub">A rare outcome leaves a model very little to learn from. Pick a fix and watch the training set change.</p>
-          <div class="toggles" role="group" aria-label="Resampling strategy">
-            <button class="toggle solid" type="button" data-s="original" aria-pressed="true">Original</button>
-            <button class="toggle solid" type="button" data-s="under" aria-pressed="false">Undersample</button>
-            <button class="toggle solid" type="button" data-s="over" aria-pressed="false">Oversample</button>
-            <button class="toggle solid" type="button" data-s="smote" aria-pressed="false">SMOTE</button>
-            <button class="toggle solid" type="button" data-s="combo" aria-pressed="false">Under + SMOTE</button>
-          </div>
-          <div class="bars" id="bars"><div class="bar-row" style="--rowc:var(--c1)"><div class="bar-label"><b>No CLABSI</b><span>950 rows</span></div><div class="bar" role="img" aria-label="No CLABSI: 950 rows for training"><div class="seg kept" style="width:100.00%"></div></div></div><div class="bar-row" style="--rowc:var(--c3)"><div class="bar-label"><b>CLABSI</b><span>50 rows</span></div><div class="bar" role="img" aria-label="CLABSI: 50 rows for training"><div class="seg kept" style="width:5.26%"></div></div></div></div>
-          <ul class="legend" aria-hidden="true">
-            <li><i class="k"></i>Kept</li>
-            <li><i class="r"></i>Removed</li>
-            <li><i class="a"></i>Added (copied or synthetic)</li>
-          </ul>
-          <p class="readout" id="readout-c" aria-live="polite">Starting point: 950 negative rows for every 50 positive rows. A model can look accurate here by almost always predicting no infection. <strong>950 : 50</strong> after. Resampling touches the training set only, after a stratified split.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="toolkit">
-      <h2>Toolkit</h2>
-      <p class="sec-note">What I use day to day.</p>
-      <ul class="tools">
-        <li><b>SQL</b><span>Querying and shaping data</span></li>
-        <li><b>Power BI</b><span>Dashboards and reports</span></li>
-        <li><b>Power Automate</b><span>Workflow automation</span></li>
-        <li><b>Python</b><span>Analysis and modeling</span></li>
-        <li><b>Excel</b><span>Modeling and quick analysis</span></li>
-        <li><b>Tableau</b><span>Visual analytics</span></li>
-        <li><b>Requirements docs</b><span>Turning requests into specs</span></li>
-      </ul>
-      <div style="margin-top:2rem">
-        <p class="label-sm">AI assistants I work with</p>
-        <ul class="chips">
-          <li>Claude</li>
-          <li>ChatGPT</li>
-          <li>Gemini</li>
-          <li>Microsoft Copilot</li>
-        </ul>
-        <p class="label-sm">AI coding tools</p>
-        <ul class="chips" style="margin-bottom:0">
-          <li>Claude Code</li>
-          <li>Cursor</li>
-          <li>GitHub Copilot</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
+<section id="outreach">
+<div class="tag">Executive analytics</div>
+<h2>Social media outreach analytics</h2>
+<ul class="plain"><li>Built Power BI dashboards that track how social media outreach is performing.</li><li>Presented the analytics to executives, explaining what the numbers meant and what to do next.</li></ul>
+<p class="stack"><b>Power BI</b> · SQL · Excel</p>
+<div class="card">
+<h3>Outreach Pulse</h3><p class="sub">Interactive · sample data</p>
+<p class="sub">A full year of weekly sample data, the kind of view an executive briefing needs. Pick the channels, set the time window, read the takeaway.</p>
+<div class="chips" id="chan"></div>
+<svg viewBox="0 0 600 200" id="chart" role="img" aria-label="Weekly reach by channel"></svg>
+<label class="sub" for="wk">Weeks shown: <b id="wkv">52</b></label>
+<input type="range" id="wk" min="4" max="52" value="52">
+<p class="out" id="take"></p>
 </div>
+</section>
+
+<section id="hr">
+<div class="tag">Low-code automation</div>
+<h2>HR workflow automation</h2>
+<ul class="plain"><li>Implemented Power Automate solutions that move HR requests through a defined process.</li><li>Wrote the business requirements behind each workflow before building it.</li></ul>
+<div class="grid4">
+<div><b>Trigger</b>A form, email or status change starts the flow.</div>
+<div><b>Approval</b>The request goes to the right person and waits for their answer.</div>
+<div><b>Notification</b>People are told what happened without anyone chasing.</div>
+<div><b>Record</b>Each request is logged so it can be reported on later.</div></div>
+<p class="stack"><b>Power Automate</b> · business requirements documentation</p>
+<div class="card">
+<h3>Request Flow</h3><p class="sub">Interactive · example flow</p>
+<p class="sub">An example of how an HR request travels once it is automated. Pick a request type, then step through the stages to see what the flow does at each one.</p>
+<div class="chips" id="rtype"></div>
+<ol id="stages"></ol>
+<p class="out" id="sdesc"></p>
+<div class="chips"><button class="go" id="next">Next stage</button><button id="reset">Start over</button></div>
+</div>
+</section>
+
+<section id="clabsi">
+<div class="tag">Predictive modeling</div>
+<h2>Healthcare Analytics Research (CLABSI Prediction)</h2>
+<ul class="plain"><li>Analyzed healthcare data to identify risk factors associated with hospital-acquired bloodstream infections.</li><li>Used Python and statistical modeling techniques to improve predictive performance and support evidence-based recommendations.</li></ul>
+<div class="grid4">
+<div><b>Data</b>Texas Children’s Hospital, in a graduate practicum with a six-person team and faculty mentors.</div>
+<div><b>Question</b>Will a patient develop a central line-associated bloodstream infection (CLABSI) within the next three days? True or False.</div>
+<div><b>Data problems</b>A heavily imbalanced target, 239,605 missing values and outliers.</div>
+<div><b>Four model types</b>Weighted neural network, bagged decision trees, support vector machine, XGBoost.</div>
+<div><b>Evaluation</b>Stratified k-fold cross-validation; precision, recall, F1, ROC-AUC; decision and cost curves, since a missed infection costs more than a false alarm.</div></div>
+<p class="stack"><b>Python</b> · scikit-learn · XGBoost</p>
+<div class="card">
+<h3>Class Balance Lab</h3><p class="sub">Interactive · illustrative counts</p>
+<p class="sub">A rare outcome leaves a model very little to learn from. Pick a fix and watch the training set change.</p>
+<div class="chips" id="meth"></div>
+<p class="sub" style="margin-bottom:0">No CLABSI</p><div class="bar" id="b0"></div>
+<p class="sub" style="margin-bottom:0">CLABSI</p><div class="bar" id="b1"></div>
+<p class="sub"><span style="color:var(--acc)">■</span> Kept &nbsp;<span style="color:var(--bad)">■</span> Removed &nbsp;<span style="color:var(--add)">■</span> Added (copied or synthetic)</p>
+<p class="out" id="bnote"></p>
+</div>
+</section>
+
+<section id="toolkit">
+<h2>Toolkit</h2>
+<p class="sub">What I use day to day.</p>
+<ul class="tools">
+<li><b>SQL</b><span>Querying and shaping data</span></li>
+<li><b>Power BI</b><span>Dashboards and reports</span></li>
+<li><b>Power Automate</b><span>Workflow automation</span></li>
+<li><b>Python</b><span>Analysis and modeling</span></li>
+<li><b>Excel</b><span>Modeling and quick analysis</span></li>
+<li><b>Tableau</b><span>Visual analytics</span></li>
+<li><b>Requirements docs</b><span>Turning requests into specs</span></li></ul>
+<p class="sub">AI assistants I work with</p>
+<ul class="plain"><li>Claude, ChatGPT, Gemini, Microsoft Copilot</li></ul>
+<p class="sub">AI coding tools</p>
+<ul class="plain"><li>Claude Code, Cursor, GitHub Copilot</li></ul>
+</section>
+</main>
+
+<footer id="contact"><div class="wrap">
+<b style="color:var(--ink)">Get in touch</b><br>
+<a href="https://www.linkedin.com/in/tobioladipo">linkedin.com/in/tobioladipo</a> · <a href="mailto:tobidoladipo@gmail.com">tobidoladipo@gmail.com</a>
+</div></footer>
 
 <script>
-/* Outreach Pulse */
-(function () {
-  var DATA = {
-    Social: [405, 434, 471, 461, 510, 483, 527, 538, 547, 555, 553, 542, 569, 585, 542, 568, 557, 596, 595, 594, 605, 642, 656, 657, 713, 724, 769, 757, 818, 805, 846, 832, 885, 879, 899, 892, 870, 880, 873, 879, 879, 899, 904, 913, 926, 923, 945, 1000, 983, 1022, 1029, 1066],
-    Email: [312, 339, 344, 330, 347, 340, 337, 337, 348, 360, 349, 363, 342, 357, 366, 353, 344, 349, 370, 346, 378, 370, 367, 368, 365, 378, 402, 385, 418, 408, 407, 414, 432, 432, 444, 464, 453, 461, 486, 497, 497, 489, 504, 488, 509, 518, 502, 505, 508, 522, 501, 518],
-    Events: [88, 87, 100, 127, 100, 129, 98, 389, 125, 97, 103, 92, 68, 68, 56, 60, 326, 84, 94, 97, 104, 110, 126, 129, 122, 387, 105, 110, 113, 102, 75, 88, 73, 61, 331, 70, 88, 105, 117, 122, 113, 120, 116, 390, 136, 111, 108, 106, 97, 61, 88, 62]
-  };
-  var COLORS = { Social: 'var(--c1)', Email: 'var(--c2)', Events: 'var(--c3)' };
-  var active = { Social: true, Email: true, Events: true };
-  var weeks = 52;
-  var root = document.getElementById('demo-outreach');
-  var svg = document.getElementById('chart');
-  var readout = document.getElementById('readout-o');
-  var range = document.getElementById('weeks');
-  var rangeOut = document.getElementById('weeks-out');
-  var W = 600, H = 280, L = 44, R = 48, T = 14, B = 30;
+const $=s=>document.querySelector(s);
+function chips(el,names,on,fn,multi){el.innerHTML='';names.forEach((n,i)=>{const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',multi?on.has(i):i===on);b.onclick=()=>fn(i);el.appendChild(b)})}
 
-  function fmt(n) { return n.toLocaleString('en-US'); }
-
-  function render() {
-    var names = Object.keys(DATA).filter(function (k) { return active[k]; });
-    var max = 100;
-    names.forEach(function (k) { DATA[k].slice(0, weeks).forEach(function (v) { if (v > max) max = v; }); });
-    var step = Math.ceil(max / 4 / 50) * 50;
-    var top = step * 4;
-    var innerW = W - L - R, innerH = H - T - B;
-    function x(i) { return L + (i * innerW) / (weeks - 1); }
-    function y(v) { return T + innerH - (v / top) * innerH; }
-
-    var out = '';
-    for (var g = 0; g <= 4; g++) {
-      var gv = g * step, gy = y(gv);
-      out += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + gy + '" y2="' + gy + '"/>';
-      out += '<text class="axis-label" x="' + (L - 8) + '" y="' + (gy + 4) + '" text-anchor="end">' + fmt(gv) + '</text>';
-    }
-    for (var i = 0; i < weeks; i++) {
-      if (!(i === weeks - 1 || (i % 4 === 0 && weeks - 1 - i >= 3))) continue;
-      out += '<text class="axis-label" x="' + x(i) + '" y="' + (H - 8) + '" text-anchor="middle">W' + (i + 1) + '</text>';
-    }
-    names.forEach(function (k) {
-      var pts = DATA[k].slice(0, weeks).map(function (v, i) { return x(i) + ',' + y(v); });
-      out += '<polyline class="line" stroke="' + COLORS[k] + '" points="' + pts.join(' ') + '"/>';
-      var last = DATA[k][weeks - 1];
-      out += '<circle cx="' + x(weeks - 1) + '" cy="' + y(last) + '" r="4.5" fill="' + COLORS[k] + '"/>';
-      out += '<text class="val" x="' + (x(weeks - 1) + 9) + '" y="' + (y(last) + 4) + '" fill="' + COLORS[k] + '">' + fmt(last) + '</text>';
-    });
-    svg.innerHTML = out;
-
-    if (!names.length) { readout.textContent = 'Turn on a channel to see its weekly reach.'; return; }
-    var total = 0, bestWeek = 0, bestVal = -1, first = 0, lastSum = 0;
-    for (var w = 0; w < weeks; w++) {
-      var sum = 0;
-      names.forEach(function (k) { sum += DATA[k][w]; });
-      total += sum;
-      if (sum > bestVal) { bestVal = sum; bestWeek = w + 1; }
-    }
-    names.forEach(function (k) { first += DATA[k][0]; lastSum += DATA[k][weeks - 1]; });
-    var change = Math.round(((lastSum - first) / first) * 100);
-    readout.innerHTML = '<strong>' + fmt(total) + '</strong> total reach over ' + weeks + ' weeks. Best week: <strong>W' + bestWeek + '</strong> at ' + fmt(bestVal) + '. Week 1 to week ' + weeks + ': <strong>' + (change >= 0 ? '+' : '') + change + '%</strong>.';
-  }
-
-  Array.prototype.forEach.call(root.querySelectorAll('.toggle'), function (btn) {
-    btn.addEventListener('click', function () {
-      var ch = btn.getAttribute('data-ch');
-      active[ch] = !active[ch];
-      btn.setAttribute('aria-pressed', active[ch] ? 'true' : 'false');
-      render();
-    });
-  });
-  range.addEventListener('input', function () {
-    weeks = parseInt(range.value, 10);
-    rangeOut.textContent = weeks;
-    render();
-  });
-  render();
-})();
-
-/* Class Balance Lab */
-(function () {
-  var TOTAL = 950;
-  var STRATS = {
-    original: {
-      maj: { kept: 950, removed: 0, added: 0 },
-      min: { kept: 50, removed: 0, added: 0 },
-      text: 'Starting point: 950 negative rows for every 50 positive rows. A model can look accurate here by almost always predicting no infection.'
-    },
-    under: {
-      maj: { kept: 50, removed: 900, added: 0 },
-      min: { kept: 50, removed: 0, added: 0 },
-      text: 'Randomly drops majority-class rows until the classes match. It is simple, but 900 rows of information are thrown away.'
-    },
-    over: {
-      maj: { kept: 950, removed: 0, added: 0 },
-      min: { kept: 50, removed: 0, added: 900 },
-      text: 'Copies minority rows until the classes match. Nothing is lost, but repeated rows can push a model to overfit.'
-    },
-    smote: {
-      maj: { kept: 950, removed: 0, added: 0 },
-      min: { kept: 50, removed: 0, added: 900 },
-      text: 'SMOTE builds new minority rows by interpolating between a positive case and its nearest neighbors, instead of copying the same rows.'
-    },
-    combo: {
-      maj: { kept: 475, removed: 475, added: 0 },
-      min: { kept: 50, removed: 0, added: 425 },
-      text: 'My team planned to combine the two: trim the majority class, then use SMOTE to lift the minority class to meet it.'
-    }
-  };
-  var ROWS = [
-    { key: 'maj', name: 'No CLABSI', color: 'var(--c1)' },
-    { key: 'min', name: 'CLABSI', color: 'var(--c3)' }
-  ];
-  var root = document.getElementById('demo-clabsi');
-  var bars = document.getElementById('bars');
-  var readout = document.getElementById('readout-c');
-  var current = 'original';
-
-  function pct(n) { return (n / TOTAL * 100).toFixed(2) + '%'; }
-  function fmt(n) { return n.toLocaleString('en-US'); }
-
-  function render() {
-    var s = STRATS[current];
-    var html = '';
-    ROWS.forEach(function (r) {
-      var d = s[r.key];
-      var final = d.kept + d.added;
-      var label = r.name + ': ' + final + ' rows for training'
-        + (d.removed ? ', ' + d.removed + ' removed' : '')
-        + (d.added ? ', ' + d.added + ' added' : '');
-      html += '<div class="bar-row" style="--rowc:' + r.color + '">'
-        + '<div class="bar-label"><b>' + r.name + '</b><span>' + fmt(final) + ' rows</span></div>'
-        + '<div class="bar" role="img" aria-label="' + label + '">'
-        + '<div class="seg kept" style="width:' + pct(d.kept) + '"></div>'
-        + (d.added ? '<div class="seg added" style="width:' + pct(d.added) + '"></div>' : '')
-        + (d.removed ? '<div class="seg removed" style="width:' + pct(d.removed) + '"></div>' : '')
-        + '</div></div>';
-    });
-    bars.innerHTML = html;
-    var maj = s.maj.kept + s.maj.added;
-    var min = s.min.kept + s.min.added;
-    readout.innerHTML = s.text + ' <strong>' + fmt(maj) + ' : ' + fmt(min) + '</strong> after. Resampling touches the training set only, after a stratified split.';
-  }
-
-  Array.prototype.forEach.call(root.querySelectorAll('.toggle'), function (btn) {
-    btn.addEventListener('click', function () {
-      current = btn.getAttribute('data-s');
-      Array.prototype.forEach.call(root.querySelectorAll('.toggle'), function (b) {
-        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
-      });
-      render();
-    });
-  });
-  render();
-})();
+/* Outreach Pulse (illustrative sample data) */
+const ch=[{n:'Social',c:'#1f5fbf',b:420,g:7},{n:'Email',c:'#2e8b57',b:260,g:4},{n:'Events',c:'#e0a21b',b:140,g:3}];
+const data=ch.map((c,k)=>Array.from({length:52},(_,w)=>Math.round(c.b+c.g*w+40*Math.sin(w/(3+k))+((w*37+k*11)%23)-11)));
+const sel=new Set([0,1,2]);let weeks=52;
+function drawOut(){
+  chips($('#chan'),ch.map(c=>c.n),sel,i=>{sel.has(i)?sel.size>1&&sel.delete(i):sel.add(i);drawOut()},true);
+  const idx=[...sel],tot=Array.from({length:52},(_,w)=>idx.reduce((s,i)=>s+data[i][w],0));
+  const max=Math.max(...tot)*1.08,W=600,H=200,x=w=>10+(w/(weeks-1))*(W-20),y=v=>H-14-(v/max)*(H-28);
+  let s='<line x1="10" y1="'+(H-14)+'" x2="'+(W-10)+'" y2="'+(H-14)+'" stroke="currentColor" opacity=".25"/>';
+  idx.forEach(i=>{s+='<polyline fill="none" stroke="'+ch[i].c+'" stroke-width="2.5" points="'+data[i].slice(0,weeks).map((v,w)=>x(w)+','+y(v)).join(' ')+'"/>'});
+  $('#chart').innerHTML=s;
+  const t=tot.slice(0,weeks),sum=t.reduce((a,b)=>a+b,0),best=t.indexOf(Math.max(...t)),chg=Math.round((t[weeks-1]/t[0]-1)*100);
+  $('#take').innerHTML='<b>'+sum.toLocaleString()+'</b> total reach over '+weeks+' weeks. Best week: <b>W'+(best+1)+'</b> at '+t[best].toLocaleString()+'. Week 1 to week '+weeks+': <b>'+(chg>=0?'+':'')+chg+'%</b>.';
+  $('#wkv').textContent=weeks;
+}
+$('#wk').oninput=e=>{weeks=+e.target.value;drawOut()};drawOut();
 
 /* Request Flow */
-(function () {
-  var FLOWS = {
-    time: [
-      { name: 'Request submitted', text: 'An employee submits a time-off form. The flow records it and sends it to their manager.' },
-      { name: 'Approval', text: 'The manager approves or declines from their inbox. A reminder goes out if the request sits.' },
-      { name: 'HR review', text: 'Approved requests reach HR with the dates and details already filled in, so nobody retypes anything.' },
-      { name: 'Outcome sent', text: 'The employee is told the outcome and the request is logged, ready for reporting.' }
-    ],
-    equip: [
-      { name: 'Request submitted', text: 'An employee asks for equipment through a form. The flow captures what is needed and why.' },
-      { name: 'Approval', text: 'The manager approves from their inbox. The flow holds the request until they answer.' },
-      { name: 'Fulfillment', text: 'The request goes to the team that fills it, with everything attached.' },
-      { name: 'Closed out', text: 'The requester is notified and the request is closed in the log.' }
-    ],
-    onboard: [
-      { name: 'Hire confirmed', text: 'A confirmed hire starts the flow, which creates the checklist of tasks.' },
-      { name: 'Tasks assigned', text: 'Each task goes to its owner, who is notified straight away.' },
-      { name: 'Follow-up', text: 'Owners confirm when a task is done. Anything still open gets a reminder.' },
-      { name: 'Complete', text: 'When every task is done, the flow marks onboarding complete and logs it.' }
-    ]
-  };
-  var type = 'time';
-  var STAGES = FLOWS[type];
-  var list = document.getElementById('flow');
-  var readout = document.getElementById('readout-h');
-  var next = document.getElementById('flow-next');
-  var reset = document.getElementById('flow-reset');
-  var idx = 0;
+const stg=['Request submitted','Approval','HR review','Outcome sent'];
+const flows={'Time off':['An employee submits a time-off form. The flow records it and sends it to their manager.','The manager gets a notification with the dates and approves or declines in one click.','HR confirms the balance and policy rules, and the flow flags anything unusual.','The employee is told the outcome, the calendar is updated and the request is logged.'],
+'Equipment':['An employee requests a laptop or monitor through a form. The flow logs it and routes it to their manager.','The manager approves the request and the cost center.','IT and HR check stock and budget, then confirm the order.','The employee gets the delivery details and the request is closed in the record.'],
+'New hire':['A recruiter marks a candidate as hired, which starts the onboarding flow.','The hiring manager confirms the start date and role details.','HR prepares paperwork and system access requests.','The new hire gets a welcome message with first-day details, and everything is recorded.']};
+const types=Object.keys(flows);let ft=0,fs=0;
+function drawFlow(){
+  chips($('#rtype'),types,ft,i=>{ft=i;fs=0;drawFlow()});
+  $('#stages').innerHTML=stg.map((n,i)=>'<li class="'+(i===fs?'now':i<fs?'done':'')+'" data-i="'+i+'"><span>'+(i+1)+' of 4 · '+(i===fs?'Now':i<fs?'Done':'Waiting')+'</span>'+n+'</li>').join('');
+  [...$('#stages').children].forEach(li=>li.onclick=()=>{fs=+li.dataset.i;drawFlow()});
+  $('#sdesc').innerHTML='<b>'+stg[fs]+'.</b> '+flows[types[ft]][fs];
+}
+$('#next').onclick=()=>{fs=Math.min(3,fs+1);drawFlow()};$('#reset').onclick=()=>{fs=0;drawFlow()};drawFlow();
 
-  function render() {
-    var html = '';
-    STAGES.forEach(function (s, i) {
-      var state = i < idx ? 'Done' : (i === idx ? 'Now' : 'Waiting');
-      html += '<li><button type="button" data-i="' + i + '" class="' + (i < idx ? 'done' : '') + '"' + (i === idx ? ' aria-current="step"' : '') + '>'
-        + '<small>' + (i + 1) + ' of ' + STAGES.length + ' · ' + state + '</small>' + s.name + '</button></li>';
-    });
-    list.innerHTML = html;
-    readout.innerHTML = '<strong>' + STAGES[idx].name + '.</strong> ' + STAGES[idx].text;
-    next.textContent = idx === STAGES.length - 1 ? 'Finished' : 'Next stage';
-    next.disabled = idx === STAGES.length - 1;
-  }
-
-  list.addEventListener('click', function (e) {
-    var b = e.target.closest('button[data-i]');
-    if (!b) return;
-    idx = parseInt(b.getAttribute('data-i'), 10);
-    render();
-  });
-  next.addEventListener('click', function () { if (idx < STAGES.length - 1) { idx++; render(); } });
-  reset.addEventListener('click', function () { idx = 0; render(); });
-  var typeBtns = document.querySelectorAll('#flow-types .toggle');
-  Array.prototype.forEach.call(typeBtns, function (btn) {
-    btn.addEventListener('click', function () {
-      type = btn.getAttribute('data-t');
-      STAGES = FLOWS[type];
-      idx = 0;
-      Array.prototype.forEach.call(typeBtns, function (b) {
-        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
-      });
-      render();
-    });
-  });
-  render();
-})();
+/* Class Balance Lab (illustrative counts) */
+const M=[{n:'Original',neg:[950,0,0],pos:[50,0,0],t:'A model can look accurate here by almost always predicting no infection.'},
+{n:'Undersample',neg:[50,900,0],pos:[50,0,0],t:'Balanced, but 900 real rows are thrown away.'},
+{n:'Oversample',neg:[950,0,0],pos:[50,0,900],t:'Balanced by copying the rare rows, which risks memorizing them.'},
+{n:'SMOTE',neg:[950,0,0],pos:[50,0,900],t:'Balanced by adding synthetic rare rows built from near neighbors.'},
+{n:'Under + SMOTE',neg:[500,450,0],pos:[50,0,450],t:'A middle path: trim the common class and synthesize the rare one.'}];
+let mi=0;
+function bar(el,[k,r,a],tot){el.innerHTML='<i class="k" style="width:'+k/tot*100+'%"></i><i class="r" style="width:'+r/tot*100+'%"></i><i class="a" style="width:'+a/tot*100+'%"></i>'}
+function drawLab(){
+  chips($('#meth'),M.map(m=>m.n),mi,i=>{mi=i;drawLab()});
+  const m=M[mi];bar($('#b0'),m.neg,950);bar($('#b1'),m.pos,950);
+  const nn=m.neg[0]+m.neg[2],pp=m.pos[0]+m.pos[2];
+  $('#bnote').innerHTML='Starting point: 950 negative rows for every 50 positive rows. <b>'+nn+' : '+pp+'</b> after. '+m.t+' Resampling touches the training set only, after a stratified split.';
+}
+drawLab();
 </script>
-
-</body></html>
+</body>
+</html>
